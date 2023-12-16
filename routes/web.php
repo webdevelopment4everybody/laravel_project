@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Client\ClientController;
+use App\Http\Controllers\HomepageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomepageController::class, 'index'])->name('homepage');
+Route::get('/client', [ClientController::class, 'index'])->name('client');
