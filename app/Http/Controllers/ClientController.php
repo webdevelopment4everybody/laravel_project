@@ -14,8 +14,9 @@ class ClientController extends Controller
 
     public function index()
     {
+        session()->put('role', 'client');
         return view("conferences.conference-list", [
-            'conferences_list' => $this->conferenceService->getAllConferences()
+            'conferences_list' => $this->conferenceService->getAllConferences(),
         ]);
     }
 }

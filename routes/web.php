@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\ConferencesController;
+use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ConferenceController;
 use App\Http\Controllers\EmployeeController;
@@ -26,4 +28,10 @@ Route::get('/employee', [EmployeeController::class, 'index'])->name('employee');
 Route::prefix("form")->group(function () {
     Route::get('/{id}', [FormController::class, 'index'])->name('form.conference');
     Route::post('/create/{id}', [FormController::class, 'create'])->name('form.create');
+});
+Route::prefix("admin")->group(function () {
+    Route::get('/', [ConferencesController::class, 'index'])->name('admin');
+    Route::get('/users', [UsersController::class, 'show'])->name('admin.users');
+    Route::get('/user/{id}', [UsersController::class, 'showUserInfo'])->name('admin.user');
+    Route::put('/user/update/{id}', [UsersController::class, 'update'])->name('admin.user.update');
 });

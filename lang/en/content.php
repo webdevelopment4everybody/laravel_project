@@ -20,6 +20,19 @@ return [
         'email' => 'Email address',
         'phone' => 'Phone number',
         'submit' => 'Submit',
+        'update' => 'Update',
+        'edit' => 'Edit',
         'registration_title' => 'Registration',
+        'back' => 'Go back',
+        'not_found'=>'Užsiregistravusių nėra',
+        'registered_users_title'=>'Užsiregistravę žmonės'
+    ],
+    'users'=>[
+        'client_title'=>'Client list'
+    ],
+    'admin'=>[
+        'all_users_title' =>'Visų naudotojų valdymas',
+        'conference_title' =>'Konferencijos valdymas',
+
     ]
 ];

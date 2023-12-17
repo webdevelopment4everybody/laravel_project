@@ -15,9 +15,9 @@ class EmployeeController extends Controller
 
     public function index()
     {
-        return view('employee', [
+        session()->put('role', 'employee');
+        return view('conferences.conference-list', [
             'conferences_list' => $this->conferenceService->getAllConferences(),
-            'employee'=> true
         ]);
     }
 }
