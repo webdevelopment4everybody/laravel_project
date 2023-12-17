@@ -16,7 +16,7 @@ class FormController extends Controller
 
     public function index()
     {
-        return view('conferences.conferences-form');
+        return view('conferences.conference-reservation-form');
     }
 
     public function create(ConferenceFormRequest $request)

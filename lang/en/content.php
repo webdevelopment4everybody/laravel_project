@@ -6,6 +6,7 @@ return [
         'admin' => 'Administrator',
         'employee' => 'Employee',
         'homepage' => 'Homepage',
+        'logout' => 'Logout',
     ],
     'conferences' => [
         'title' => 'All conferences',
@@ -22,17 +23,28 @@ return [
         'submit' => 'Submit',
         'update' => 'Update',
         'edit' => 'Edit',
+        'add' => 'Add',
+        'delete' => 'Delete',
         'registration_title' => 'Registration',
         'back' => 'Go back',
-        'not_found'=>'Užsiregistravusių nėra',
-        'registered_users_title'=>'Užsiregistravę žmonės'
+        'not_found' => 'There are no registered.',
+        'registered_users_title' => 'Registered people',
+        'register' => 'Register'
     ],
-    'users'=>[
-        'client_title'=>'Client list'
+    'users' => [
+        'client_title' => 'Client list'
     ],
-    'admin'=>[
-        'all_users_title' =>'Visų naudotojų valdymas',
-        'conference_title' =>'Konferencijos valdymas',
+    'admin' => [
+        'all_users_title' => 'User Management',
+        'conference_title' => 'Conference management',
+        'add_conference' => 'Add new conference',
+        'edit_conference' => 'Edit conference',
+        'conference_name' => 'Conference name',
+        'conference_description' => 'Conference description',
+        'conference_lectors' => 'Conference lectors',
+        'conference_date' => 'Conference date',
+        'conference_time' => 'Conference time',
+        'conference_location' => 'Conference location',
 
     ]
 ];

@@ -76,6 +76,8 @@ class ConferenceService
                 'location' => 'Litexpo - Vilnius, Lithuania',
                 'date' => '2023-12-10',
                 'time' => '10:00',
+                'description' => 'lalalalala',
+                'lectors' => 'Angele Angelaite',
                 'registered_users'=>[
                     [
                         'name'=>'Migle',
@@ -103,6 +105,8 @@ class ConferenceService
                 'location' => 'laks - Ryga, Latvia',
                 'date' => '2023-12-27',
                 'time' => '11:00',
+                'description' => 'lalalalala',
+                'lectors' => 'Matas Mataitis',
                 'registered_users'=>[
                     [
                         'name'=>'Migle',
@@ -114,7 +118,8 @@ class ConferenceService
                         'name'=>'One',
                         'lastname'=>'Onaite',
                         'email'=>'ona@ee.com',
-                        'phone_number'=>'1233367333'
+                        'phone_number'=>'1233367333',
+
                     ],
                 ]
             ],
@@ -124,6 +129,8 @@ class ConferenceService
                 'location' => 'Aaaa - Kaunas, Lietuva',
                 'date' => '2023-01-30',
                 'time' => '12:00',
+                'description' => 'lalalalala',
+                'lectors' => 'Stasys Stasaitis'
             ]
         ];
         foreach ($conferences as $conference) {
@@ -140,4 +147,10 @@ class ConferenceService
     {
         return 'There will be form submission logic';
     }
+
+    public function deleteConference(int $id): string
+    {
+        return 'There will be deletion logic';
+    }
+
 }

@@ -5,6 +5,11 @@
             {{__('content.conferences.title')}}
         </h1>
         <div class="relative overflow-x-auto">
+            @if(session()->get('role') == 'admin')
+                <a href="{{route('admin.conference.form')}}"
+                   class="block-inline w-[200px] mb-[20px] text-gray-900 bg-white border border-gray-300 hover:bg-gray-100  font-medium rounded-lg text-sm px-5 py-2.5 block text-center dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
+                    Add new conference</a>
+            @endif
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
@@ -23,9 +28,17 @@
                     <th scope="col" class="px-6 py-3">
                         {{__('content.conferences.conference_view')}}
                     </th>
-                    @if(session()->get('role') != 'employee')
+                    @if(session()->get('role') == 'client')
                         <th scope="col" class="px-6 py-3">
                             {{__('content.conferences.conference_register')}}
+                        </th>
+                    @endif
+                    @if(session()->get('role') == 'admin')
+                        <th scope="col" class="px-6 py-3">
+                            {{__('content.conferences.edit')}}
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            {{__('content.conferences.delete')}}
                         </th>
                     @endif
                 </tr>
@@ -49,16 +62,33 @@
                             <a href="{{ route('conference', ['id'=>$list['id']]) }}"
                                class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 block text-center dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">View</a>
                         </td>
-                        @if(session()->get('role') != 'employee')
+                        @if(session()->get('role') == 'client')
                             <td class="px-6 py-4">
                                 <a href="{{ route('form.conference', ['id'=>$list['id']]) }}"
-                                   class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 block text-center dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Register</a>
+                                   class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 block text-center dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">{{__('content.conferences.register')}}</a>
+                            </td>
+                        @endif
+                        @if(session()->get('role') == 'admin')
+                            <td class="px-6 py-4">
+                                <a href="{{ route('admin.conference.form', [$list['id']]) }}"
+                                   class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 block text-center dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"> {{__('content.conferences.edit')}}</a>
+                            </td>
+                            <td class="px-6 py-4">
+                                <form action="{{ route('admin.conference.delete') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="id" value="{{$list['id']}}">
+                                    <button type="submit"
+                                            class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900  m-0 "> {{__('content.conferences.delete')}}</button>
+                                </form>
                             </td>
                         @endif
                     </tr>
                 @endforeach
                 </tbody>
             </table>
+            @if(session()->has('success'))
+                <p class="text-center mt-[50px]">{{session()->get('success')}}</p>
+            @endif
         </div>
     </div>
 @endsection
