@@ -67,4 +67,9 @@ class ConferenceService
 
         return [];
     }
+
+    public function createConference(array $data): string
+    {
+        return 'There will be form submission logic';
+    }
 }

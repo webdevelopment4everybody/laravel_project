@@ -14,7 +14,7 @@ class ClientController extends Controller
 
     public function index()
     {
-        return view("client-system.conference-list", [
+        return view("conferences.conference-list", [
             'conferences_list' => $this->conferenceService->getAllConferences()
         ]);
     }

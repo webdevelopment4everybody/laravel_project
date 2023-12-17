@@ -16,7 +16,7 @@ class ConferenceController extends Controller
 
     public function index(Request $request)
     {
-        return view("client-system.conference-inner", [
+        return view("conferences.conference-inner", [
             'conference' => $this->conferenceService->getConferenceById($request->id)
         ]);
     }
