@@ -22,10 +22,10 @@
                         <a href="{{route('client')}}" class="block py-2 pr-4 pl-3 text-white rounded bg-primary-700 lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white" aria-current="page">{{__('content.header.client')}}</a>
                     </li>
                     <li>
-                        <a href="#" class="block py-2 pr-4 pl-3 text-white rounded bg-primary-700 lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white" aria-current="page">{{__('content.header.employee')}}</a>
+                        <a href="{{route('employee')}}" class="block py-2 pr-4 pl-3 text-white rounded bg-primary-700 lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white" aria-current="page">{{__('content.header.employee')}}</a>
                     </li>
                     <li>
-                        <a href="#" class="block py-2 pr-4 pl-3 text-white rounded bg-primary-700 lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white" aria-current="page">{{__('content.header.admin')}}</a>
+{{--                        <a href="{{route('admin')}}" class="block py-2 pr-4 pl-3 text-white rounded bg-primary-700 lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white" aria-current="page">{{__('content.header.admin')}}</a>--}}
                     </li>
                 </ul>
             </div>

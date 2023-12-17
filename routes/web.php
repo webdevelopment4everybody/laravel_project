@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ConferenceController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\HomepageController;
 use Illuminate\Support\Facades\Route;
@@ -21,5 +22,8 @@ Route::get('/', [HomepageController::class, 'index'])->name('homepage');
 Route::get('/client', [ClientController::class, 'index'])->name('client');
 Route::get('/conference/{id}', [ConferenceController::class, 'index'])->name('conference');
 //Route::get('/form', [FormController::class, 'index'])->name('form');
-Route::get('/form/{id}', [FormController::class, 'index'])->name('form.conference');
-Route::post('/form/create/{id}', [FormController::class, 'create'])->name('form.create');
+Route::get('/employee', [EmployeeController::class, 'index'])->name('employee');
+Route::prefix("form")->group(function () {
+    Route::get('/{id}', [FormController::class, 'index'])->name('form.conference');
+    Route::post('/create/{id}', [FormController::class, 'create'])->name('form.create');
+});
