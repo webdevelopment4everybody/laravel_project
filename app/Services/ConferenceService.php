@@ -58,7 +58,7 @@ class ConferenceService
             [
                 'id' => 3,
                 'name' => 'Conference III',
-                'location' => 'Aaaa - Kaunas, Lietuva',
+                'location' => 'Aaaa - Kaunas, Lithuania',
                 'date' => '2023-01-30',
                 'time' => '12:00',
             ]
@@ -126,7 +126,7 @@ class ConferenceService
             [
                 'id' => 3,
                 'name' => 'Conference III',
-                'location' => 'Aaaa - Kaunas, Lietuva',
+                'location' => 'Aaaa - Kaunas, Lithuania',
                 'date' => '2023-01-30',
                 'time' => '12:00',
                 'description' => 'lalalalala',

@@ -38,7 +38,7 @@ Route::prefix("admin")->group(function () {
 
     Route::prefix("conferences")->group(function () {
         Route::get('/', [ConferencesController::class, 'conferences'])->name('admin.conferences');
-        Route::post('/delete', [ConferencesController::class, 'delete'])->name('admin.conference.delete');
+        Route::delete('/delete', [ConferencesController::class, 'delete'])->name('admin.conference.delete');
         Route::get('/form/{edit?}', [ConferencesController::class, 'showForm'])->name('admin.conference.form');
         Route::post('/create/', [ConferencesController::class, 'create'])->name('admin.conference.create');
     });
