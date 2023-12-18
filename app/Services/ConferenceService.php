@@ -13,24 +13,24 @@ class ConferenceService
                 'location' => 'Litexpo - Vilnius, Lithuania',
                 'date' => '2023-12-10',
                 'time' => '10:00',
-                'registered_users'=>[
+                'registered_users' => [
                     [
-                    'name'=>'Migle',
-                    'lastname'=>'Pupeikyte',
-                    'email'=>'m.pupeikyteee@gmail.com',
-                    'phone_number'=>'1234567890'
+                        'name' => 'Migle',
+                        'lastname' => 'Pupeikyte',
+                        'email' => 'm.pupeikyteee@gmail.com',
+                        'phone_number' => '1234567890'
                     ],
                     [
-                        'name'=>'Jonas',
-                        'lastname'=>'Jonaitis',
-                        'email'=>'j.jonaitis@gmail.com',
-                        'phone_number'=>'2234567899'
+                        'name' => 'Jonas',
+                        'lastname' => 'Jonaitis',
+                        'email' => 'j.jonaitis@gmail.com',
+                        'phone_number' => '2234567899'
                     ],
                     [
-                        'name'=>'Saule',
-                        'lastname'=>'Saulyte',
-                        'email'=>'saule.saulyte@aa.com',
-                        'phone_number'=>'2232167800'
+                        'name' => 'Saule',
+                        'lastname' => 'Saulyte',
+                        'email' => 'saule.saulyte@aa.com',
+                        'phone_number' => '2232167800'
                     ]
                 ]
             ],
@@ -40,18 +40,18 @@ class ConferenceService
                 'location' => 'laks - Ryga, Latvia',
                 'date' => '2023-12-27',
                 'time' => '11:00',
-                'registered_users'=>[
+                'registered_users' => [
                     [
-                        'name'=>'Migle',
-                        'lastname'=>'Pupeikyte',
-                        'email'=>'m.pupeikyteee@gmail.com',
-                        'phone_number'=>'1234567890'
+                        'name' => 'Migle',
+                        'lastname' => 'Pupeikyte',
+                        'email' => 'm.pupeikyteee@gmail.com',
+                        'phone_number' => '1234567890'
                     ],
                     [
-                        'name'=>'One',
-                        'lastname'=>'Onaite',
-                        'email'=>'ona@ee.com',
-                        'phone_number'=>'1233367333'
+                        'name' => 'One',
+                        'lastname' => 'Onaite',
+                        'email' => 'ona@ee.com',
+                        'phone_number' => '1233367333'
                     ],
                 ]
             ],
@@ -78,24 +78,24 @@ class ConferenceService
                 'time' => '10:00',
                 'description' => 'lalalalala',
                 'lectors' => 'Angele Angelaite',
-                'registered_users'=>[
+                'registered_users' => [
                     [
-                        'name'=>'Migle',
-                        'lastname'=>'Pupeikyte',
-                        'email'=>'m.pupeikyteee@gmail.com',
-                        'phone_number'=>'1234567890'
+                        'name' => 'Migle',
+                        'lastname' => 'Pupeikyte',
+                        'email' => 'm.pupeikyteee@gmail.com',
+                        'phone_number' => '1234567890'
                     ],
                     [
-                        'name'=>'Jonas',
-                        'lastname'=>'Jonaitis',
-                        'email'=>'j.jonaitis@gmail.com',
-                        'phone_number'=>'2234567899'
+                        'name' => 'Jonas',
+                        'lastname' => 'Jonaitis',
+                        'email' => 'j.jonaitis@gmail.com',
+                        'phone_number' => '2234567899'
                     ],
                     [
-                        'name'=>'Saule',
-                        'lastname'=>'Saulyte',
-                        'email'=>'saule.saulyte@aa.com',
-                        'phone_number'=>'2232167800'
+                        'name' => 'Saule',
+                        'lastname' => 'Saulyte',
+                        'email' => 'saule.saulyte@aa.com',
+                        'phone_number' => '2232167800'
                     ]
                 ]
             ],
@@ -107,18 +107,18 @@ class ConferenceService
                 'time' => '11:00',
                 'description' => 'lalalalala',
                 'lectors' => 'Matas Mataitis',
-                'registered_users'=>[
+                'registered_users' => [
                     [
-                        'name'=>'Migle',
-                        'lastname'=>'Pupeikyte',
-                        'email'=>'m.pupeikyteee@gmail.com',
-                        'phone_number'=>'1234567890'
+                        'name' => 'Migle',
+                        'lastname' => 'Pupeikyte',
+                        'email' => 'm.pupeikyteee@gmail.com',
+                        'phone_number' => '1234567890'
                     ],
                     [
-                        'name'=>'One',
-                        'lastname'=>'Onaite',
-                        'email'=>'ona@ee.com',
-                        'phone_number'=>'1233367333',
+                        'name' => 'One',
+                        'lastname' => 'Onaite',
+                        'email' => 'ona@ee.com',
+                        'phone_number' => '1233367333',
 
                     ],
                 ]
