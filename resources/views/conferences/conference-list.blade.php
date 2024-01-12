@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('content')
+    @php
+        $currentTimestamp  = strtotime(date('Y-m-d'));
+    @endphp
     <div class="mx-auto text-black container">
         <h1 class="flex items-center text-5xl font-extrabold mt-[50px] mb-[50px] justify-center dark:text-[#2c384d]">
             {{__('content.conferences.title')}}
@@ -62,10 +65,10 @@
                             <a href="{{ route('conference', ['id'=>$list['id']]) }}"
                                class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 block text-center dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">View</a>
                         </td>
-                        @if(session()->get('role') == 'client')
+                        @if(session()->get('role') == 'client' )
                             <td class="px-6 py-4">
                                 <a href="{{ route('form.conference', ['id'=>$list['id']]) }}"
-                                   class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 block text-center dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">{{__('content.conferences.register')}}</a>
+                                   class=" {{ (strtotime($list['date']) > strtotime(date('Y-m-d'))) ? '' : 'disabled-register-btn'}} text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 block text-center dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">{{__('content.conferences.register')}}</a>
                             </td>
                         @endif
                         @if(session()->get('role') == 'admin')
