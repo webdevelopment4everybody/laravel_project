@@ -26,8 +26,9 @@ class ConferenceFormRequest extends FormRequest
         return [
             'first_name' => 'required|alpha|max:255',
             'last_name' => 'required|alpha|max:255',
-            'email' => 'required|email:rfc, dns',
+            'email' => 'required|unique:users|email:rfc, dns',
             'phone' => 'required|numeric',
+            'password' => 'required|min:8',
         ];
     }
 

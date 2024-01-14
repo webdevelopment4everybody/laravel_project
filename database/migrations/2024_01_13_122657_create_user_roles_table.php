@@ -14,9 +14,7 @@ return new class extends Migration
     {
         Schema::create('user_roles', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger("user_id");
             $table->enum("name", UserRoles::toArray())->default(UserRoles::CLIENT);
-            $table->foreign("user_id")->references("id")->on("users")->onUpdate("cascade")->onDelete("cascade");
             $table->timestamps();
         });
     }

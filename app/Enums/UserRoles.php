@@ -18,4 +18,16 @@ enum UserRoles: string
         return $array;
     }
 
+    public static function getIndex($name): ?int
+    {
+        $cases = self::cases();
+        foreach ($cases as $index => $case) {
+            if ($case->name === $name) {
+                return $index+1;
+            }
+        }
+
+        return null; // Return null if the name is not found
+    }
+
 }

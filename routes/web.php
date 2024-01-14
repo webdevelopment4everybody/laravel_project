@@ -7,6 +7,8 @@ use App\Http\Controllers\ConferenceController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,3 +45,9 @@ Route::prefix("admin")->group(function () {
         Route::post('/create/', [ConferencesController::class, 'create'])->name('admin.conference.create');
     });
 });
+Route::get('/register', [RegisterController::class, 'index'])->name('register');
+Route::post('/register/create', [RegisterController::class, 'create'])->name('register.user');
+
+
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/login/create', [LoginController::class, 'login'])->name('login.user');

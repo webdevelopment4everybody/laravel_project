@@ -45,6 +45,19 @@ return [
         'conference_date' => 'Conference date',
         'conference_time' => 'Conference time',
         'conference_location' => 'Conference location',
-
+    ],
+    'messages' => [
+        'user_created_successfuly' => 'New user created successfully.',
+        'user_created_error' => 'There was an error saving data.'
+    ],
+    'register' => [
+        'reg_title' => 'Register',
+        'login_link' => 'Login',
+        'password'=>'Password'
+    ],
+    'login' => [
+        'title'=>'Login',
+        'submit'=>'Login',
+        'user_not_found'=> 'User not found. Please try again.'
     ]
 ];
