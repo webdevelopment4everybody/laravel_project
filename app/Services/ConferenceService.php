@@ -2,145 +2,19 @@
 
 namespace App\Services;
 
+use App\Models\Conference;
+use Illuminate\Database\Eloquent\Collection;
+
 class ConferenceService
 {
-    public function getAllConferences(): array
+    public function getAllConferences(): Collection
     {
-        $conferences = [
-            [
-                'id' => 1,
-                'name' => 'Conference I',
-                'location' => 'Litexpo - Vilnius, Lithuania',
-                'date' => '2023-12-10',
-                'time' => '10:00',
-                'registered_users' => [
-                    [
-                        'name' => 'Migle',
-                        'lastname' => 'Pupeikyte',
-                        'email' => 'm.pupeikyteee@gmail.com',
-                        'phone_number' => '1234567890'
-                    ],
-                    [
-                        'name' => 'Jonas',
-                        'lastname' => 'Jonaitis',
-                        'email' => 'j.jonaitis@gmail.com',
-                        'phone_number' => '2234567899'
-                    ],
-                    [
-                        'name' => 'Saule',
-                        'lastname' => 'Saulyte',
-                        'email' => 'saule.saulyte@aa.com',
-                        'phone_number' => '2232167800'
-                    ]
-                ]
-            ],
-            [
-                'id' => 2,
-                'name' => 'Conference II',
-                'location' => 'laks - Ryga, Latvia',
-                'date' => '2023-12-27',
-                'time' => '11:00',
-                'registered_users' => [
-                    [
-                        'name' => 'Migle',
-                        'lastname' => 'Pupeikyte',
-                        'email' => 'm.pupeikyteee@gmail.com',
-                        'phone_number' => '1234567890'
-                    ],
-                    [
-                        'name' => 'One',
-                        'lastname' => 'Onaite',
-                        'email' => 'ona@ee.com',
-                        'phone_number' => '1233367333'
-                    ],
-                ]
-            ],
-            [
-                'id' => 3,
-                'name' => 'Conference III',
-                'location' => 'Aaaa - Kaunas, Lithuania',
-                'date' => '2023-01-30',
-                'time' => '12:00',
-            ]
-        ];
-
-        return $conferences;
+        return Conference::all();
     }
 
-    public function getConferenceById(int $id): array
+    public function getConferenceById(int $id): Conference
     {
-        $conferences = [
-            [
-                'id' => 1,
-                'name' => 'Conference I',
-                'location' => 'Litexpo - Vilnius, Lithuania',
-                'date' => '2023-12-10',
-                'time' => '10:00',
-                'description' => 'lalalalala',
-                'lectors' => 'Angele Angelaite',
-                'registered_users' => [
-                    [
-                        'name' => 'Migle',
-                        'lastname' => 'Pupeikyte',
-                        'email' => 'm.pupeikyteee@gmail.com',
-                        'phone_number' => '1234567890'
-                    ],
-                    [
-                        'name' => 'Jonas',
-                        'lastname' => 'Jonaitis',
-                        'email' => 'j.jonaitis@gmail.com',
-                        'phone_number' => '2234567899'
-                    ],
-                    [
-                        'name' => 'Saule',
-                        'lastname' => 'Saulyte',
-                        'email' => 'saule.saulyte@aa.com',
-                        'phone_number' => '2232167800'
-                    ]
-                ]
-            ],
-            [
-                'id' => 2,
-                'name' => 'Conference II',
-                'location' => 'laks - Ryga, Latvia',
-                'date' => '2023-12-27',
-                'time' => '11:00',
-                'description' => 'lalalalala',
-                'lectors' => 'Matas Mataitis',
-                'registered_users' => [
-                    [
-                        'name' => 'Migle',
-                        'lastname' => 'Pupeikyte',
-                        'email' => 'm.pupeikyteee@gmail.com',
-                        'phone_number' => '1234567890'
-                    ],
-                    [
-                        'name' => 'One',
-                        'lastname' => 'Onaite',
-                        'email' => 'ona@ee.com',
-                        'phone_number' => '1233367333',
-
-                    ],
-                ]
-            ],
-            [
-                'id' => 3,
-                'name' => 'Conference III',
-                'location' => 'Aaaa - Kaunas, Lithuania',
-                'date' => '2023-01-30',
-                'time' => '12:00',
-                'description' => 'lalalalala',
-                'lectors' => 'Stasys Stasaitis'
-            ]
-        ];
-        foreach ($conferences as $conference) {
-            if ($conference['id'] == $id) {
-
-                return $conference;
-            }
-        }
-
-        return [];
+       return Conference::find($id);
     }
 
     public function createConference(array $data): string
