@@ -38,8 +38,14 @@ class UsersController extends Controller
 
     public function update(ConferenceFormRequest $request)
     {
-        return redirect()->back()->with([
-            'success' => $this->userService->update($request->all())
+        $response = $this->userService->update($request->all(), $request->user_id);
+        $jsonResponse = json_decode($response->content());
+
+        return redirect()->back()->withInput()->with([
+            'message'=> $jsonResponse->message,
+            'status'=> 0
         ]);
+
+
     }
 }

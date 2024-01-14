@@ -26,7 +26,7 @@ class ConferenceFormRequest extends FormRequest
         return [
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|alpha|max:255',
-            'email' => 'required|email|unique:users,email,' . auth()->id(),
+            'email' => 'required|email|unique:users,email,' . ($this->user_id ?? auth()->id()),
             'phone' => 'required|string',
         ];
     }

@@ -46,7 +46,7 @@ Route::middleware(["admin_role"])->group(function () {
         Route::get('/', [ConferencesController::class, 'index'])->name('administrator');
         Route::get('/users', [UsersController::class, 'show'])->name('administrator.users');
         Route::get('/user/{id}', [UsersController::class, 'showUserInfo'])->name('administrator.user');
-        Route::put('/user/update/{id}', [UsersController::class, 'update'])->name('administrator.user.update');
+        Route::put('/user/update/{user_id}', [UsersController::class, 'update'])->name('administrator.user.update');
 
         Route::prefix("conferences")->group(function () {
             Route::get('/', [ConferencesController::class, 'conferences'])->name('administrator.conferences');

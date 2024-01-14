@@ -5,76 +5,44 @@ namespace App\Services;
 use App\Models\User;
 use App\Models\UserRole;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Eloquent\Collection;
 
 class UserService
 {
-    public function getAllUsers(): array
+    public function getAllUsers(): Collection
     {
-        $users = [
-            [
-                'id' => '1',
-                'name' => 'Migle',
-                'lastname' => 'Pupeikyte',
-                'email' => 'm.pupeikyteee@gmail.com',
-                'phone_number' => '1234567890'
-            ],
-            [
-                'id' => '2',
-                'name' => 'Jonas',
-                'lastname' => 'Jonaitis',
-                'email' => 'j.jonaitis@gmail.com',
-                'phone_number' => '2234567899'
-            ],
-            [
-                'id' => '3',
-                'name' => 'Saule',
-                'lastname' => 'Saulyte',
-                'email' => 'saule.saulyte@aa.com',
-                'phone_number' => '2232167800'
-            ]
-        ];
-        return $users;
+        return User::all();
     }
 
-    public function getUserById(int $id): array
+    public function getUserById(int $id): User
     {
-        $users = [
-            [
-                'id' => '1',
-                'name' => 'Migle',
-                'lastname' => 'Pupeikyte',
-                'email' => 'm.pupeikyteee@gmail.com',
-                'phone_number' => '1234567890'
-            ],
-            [
-                'id' => '2',
-                'name' => 'Jonas',
-                'lastname' => 'Jonaitis',
-                'email' => 'j.jonaitis@gmail.com',
-                'phone_number' => '2234567899'
-            ],
-            [
-                'id' => '3',
-                'name' => 'Saule',
-                'lastname' => 'Saulyte',
-                'email' => 'saule.saulyte@aa.com',
-                'phone_number' => '2232167800'
-            ]
-        ];
+        return User::find($id);
+    }
 
-        foreach ($users as $user) {
-            if ($user['id'] == $id) {
+    public function update(array $data, int $userId):\Illuminate\Http\JsonResponse
+    {
+        $user = User::find($userId);
 
-                return $user;
-            }
+        if ($user) {
+
+            $user->update([
+                "name" => $data['first_name'],
+                "lastname" => $data['last_name'],
+                "email" => $data['email'],
+                "phone" => $data['phone'],
+            ]);
+
+            return response()->json([
+                'success' => true,
+                'message' => __('content.conferences.user_updated_successfuly')
+            ]);
         }
 
-        return [];
-    }
+        return response()->json([
+            'success' => false,
+            'message' => __('content.conferences.user_updated_error')
+        ]);
 
-    public function update(array $data): string
-    {
-        return 'There will be form submission logic';
     }
 
     public function create(string $firstName, string $lastName, string $email, string $phoneNumber, string $password)
@@ -103,7 +71,7 @@ class UserService
 
     public function authenticate(string $email, string $password)
     {
-        if(auth()->attempt(['email' => $email, 'password' => $password])) {
+        if (auth()->attempt(['email' => $email, 'password' => $password])) {
 
             return response()->json([
                 'success' => true,

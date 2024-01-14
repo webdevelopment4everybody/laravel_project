@@ -8,6 +8,7 @@ use App\Http\Requests\CreateConferenceRequest;
 use App\Http\Requests\DeleteRequest;
 use App\Services\ConferenceService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 
 class ConferencesController extends Controller
 {
@@ -32,9 +33,22 @@ class ConferencesController extends Controller
 
     public function delete(DeleteRequest $request)
     {
-        return redirect()->back()->with([
-            'success' => $this->conferenceService->deleteConference($request->id)
+        $response =$this->conferenceService->deleteConference($request->id);
+        $jsonResponse = json_decode($response->content());
+
+        if ($jsonResponse->success) {
+            return redirect()->back()->with([
+                'message'=> $jsonResponse->message,
+                'status'=> 1
+            ]);
+        }
+
+        return redirect()->back()->withInput()->with([
+            'message'=> $jsonResponse->message,
+            'status'=> 0
         ]);
+
+
     }
 
     public function showForm(Request $request)
@@ -50,8 +64,19 @@ class ConferencesController extends Controller
 
     public function create(CreateConferenceRequest $request)
     {
-        return redirect()->back()->with([
-            'success' => $this->conferenceService->createConference($request->all())
+        $response = $this->conferenceService->createConference($request->all());
+        $jsonResponse = json_decode($response->content());
+
+        if ($jsonResponse->success) {
+            return redirect()->back()->with([
+                'message'=> $jsonResponse->message,
+                'status'=> 1
+            ]);
+        }
+
+        return redirect()->back()->withInput()->with([
+            'message'=> $jsonResponse->message,
+            'status'=> 0
         ]);
     }
 }

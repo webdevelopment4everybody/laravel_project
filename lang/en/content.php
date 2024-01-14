@@ -34,6 +34,10 @@ return [
         'registration_success'=> 'Successfully registered.',
         'registration_fail'=> 'Registration failed.',
         'already_registered'=> 'User is already registered.',
+        'user_updated_successfuly' => 'User updated successfully.',
+        'user_updated_error' => 'User update failed.',
+        'update_success' => 'Updated successfully.',
+        'update_fail' => 'Update failed.',
     ],
     'users' => [
         'client_title' => 'Client list'

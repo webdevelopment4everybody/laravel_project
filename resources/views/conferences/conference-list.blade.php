@@ -80,6 +80,7 @@
                             <td class="px-6 py-4">
                                 <form action="{{ route('administrator.conference.delete') }}" method="post">
                                     @csrf
+                                    @method('delete')
                                     <input type="hidden" name="id" value="{{$list->id}}">
                                     <button type="submit"
                                             class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900  m-0 "> {{__('content.conferences.delete')}}</button>
@@ -92,8 +93,8 @@
                 @endforelse
                 </tbody>
             </table>
-            @if(session()->has('success'))
-                <p class="text-center mt-[50px]">{{session()->get('success')}}</p>
+            @if(session()->has('message'))
+                <p class="text-center mt-[50px]">{{session()->get('message')}}</p>
             @endif
         </div>
     </div>
