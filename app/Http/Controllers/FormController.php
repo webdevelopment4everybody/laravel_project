@@ -25,4 +25,10 @@ class FormController extends Controller
             'success' => $this->conferenceService->createConference($request->all())
         ]);
     }
+
+    public function logout()
+    {
+        auth()->logout();
+        return redirect()->to('login');
+    }
 }

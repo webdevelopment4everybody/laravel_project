@@ -2,11 +2,13 @@
 
 namespace App\Http\Middleware;
 
+use App\Enums\UserRoles;
+use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class RoleMiddleware
+class EmployeeMiddleware
 {
     /**
      * Handle an incoming request.
@@ -15,6 +17,15 @@ class RoleMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        return $next($request);
+        if (auth()->check()) {
+            $user = User::with("role")->find(auth()->user()->id);
+
+            if ($user->role->name == UserRoles::EMPLOYEE->value) {
+
+                return $next($request);
+            }
+        }
+
+        return redirect("login");
     }
 }

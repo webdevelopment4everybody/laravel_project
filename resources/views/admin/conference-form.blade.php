@@ -2,11 +2,11 @@
 @section('content')
     <div class="mx-auto text-black container relative">
         <a class="right-0 absolute text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-           href="{{route('admin.conferences')}}">{{__('content.conferences.back')}}</a>
+           href="{{route('administrator.conferences')}}">{{__('content.conferences.back')}}</a>
         <h1 class="flex items-center text-5xl font-extrabold mt-[50px] mb-[50px] justify-center dark:text-[#2c384d]">
             {{ empty($data) ? __('content.admin.add_conference') : __('content.admin.edit_conference')}}
         </h1>
-        <form class="max-w-md mx-auto" method="post" action="{{route('admin.conference.create')}}">
+        <form class="max-w-md mx-auto" method="post" action="{{route('administrator.conference.create')}}">
             @csrf
             <div class="grid md:grid-cols-2 md:gap-6">
                 <div class="relative z-0 w-full mb-5 group">

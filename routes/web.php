@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\UserRoles;
 use App\Http\Controllers\Admin\ConferencesController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\ClientController;
@@ -25,24 +26,34 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomepageController::class, 'index'])->name('homepage');
 
 Route::get('/conference/{id}', [ConferenceController::class, 'index'])->name('conference');
-Route::get('/employee', [EmployeeController::class, 'index'])->name('employee');
-
-Route::prefix("client")->group(function () {
-    Route::get('/', [ClientController::class, 'index'])->name('client');
-    Route::get('form/{id}', [FormController::class, 'index'])->name('form.conference');
-    Route::post('form/create/{id}', [FormController::class, 'create'])->name('form.create');
+Route::middleware(["employee_role"])->group(function () {
+    Route::get('/employee', [EmployeeController::class, 'index'])->name('employee');
 });
-Route::prefix("admin")->group(function () {
-    Route::get('/', [ConferencesController::class, 'index'])->name('admin');
-    Route::get('/users', [UsersController::class, 'show'])->name('admin.users');
-    Route::get('/user/{id}', [UsersController::class, 'showUserInfo'])->name('admin.user');
-    Route::put('/user/update/{id}', [UsersController::class, 'update'])->name('admin.user.update');
+Route::middleware(["client_role"])->group(function () {
+    Route::prefix("client")->group(function () {
+        Route::get('/', [ClientController::class, 'index'])->name('client');
+        Route::get('form/{id}', [FormController::class, 'index'])->name('form.conference');
+        Route::post('form/create/{id}', [FormController::class, 'create'])->name('form.create');
+    });
+});
+Route::middleware(["auth"])->group(function () {
+    Route::post('form/logout', [FormController::class, 'logout'])->name('logout');
+});
 
-    Route::prefix("conferences")->group(function () {
-        Route::get('/', [ConferencesController::class, 'conferences'])->name('admin.conferences');
-        Route::delete('/delete', [ConferencesController::class, 'delete'])->name('admin.conference.delete');
-        Route::get('/form/{edit?}', [ConferencesController::class, 'showForm'])->name('admin.conference.form');
-        Route::post('/create/', [ConferencesController::class, 'create'])->name('admin.conference.create');
+
+Route::middleware(["admin_role"])->group(function () {
+    Route::prefix("admin")->group(function () {
+        Route::get('/', [ConferencesController::class, 'index'])->name('administrator');
+        Route::get('/users', [UsersController::class, 'show'])->name('administrator.users');
+        Route::get('/user/{id}', [UsersController::class, 'showUserInfo'])->name('administrator.user');
+        Route::put('/user/update/{id}', [UsersController::class, 'update'])->name('administrator.user.update');
+
+        Route::prefix("conferences")->group(function () {
+            Route::get('/', [ConferencesController::class, 'conferences'])->name('administrator.conferences');
+            Route::delete('/delete', [ConferencesController::class, 'delete'])->name('administrator.conference.delete');
+            Route::get('/form/{edit?}', [ConferencesController::class, 'showForm'])->name('administrator.conference.form');
+            Route::post('/create/', [ConferencesController::class, 'create'])->name('administrator.conference.create');
+        });
     });
 });
 Route::get('/register', [RegisterController::class, 'index'])->name('register');

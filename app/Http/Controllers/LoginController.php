@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\UserRoles;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use App\Services\UserService;
@@ -27,7 +28,7 @@ class LoginController extends Controller
         $jsonResponse = json_decode($authenticated->content());
 
         if ($jsonResponse->success) {
-            return redirect()->to('client');
+            return redirect()->to(auth()->user()->role->name);
         }
 
         return redirect()->back()->withInput()->with([

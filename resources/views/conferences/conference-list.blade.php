@@ -9,7 +9,7 @@
         </h1>
         <div class="relative overflow-x-auto">
             @if(session()->get('role') == 'admin')
-                <a href="{{route('admin.conference.form')}}"
+                <a href="{{route('administrator.conference.form')}}"
                    class="block-inline w-[200px] mb-[20px] text-gray-900 bg-white border border-gray-300 hover:bg-gray-100  font-medium rounded-lg text-sm px-5 py-2.5 block text-center dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
                     Add new conference</a>
             @endif
@@ -73,11 +73,11 @@
                         @endif
                         @if(session()->get('role') == 'admin')
                             <td class="px-6 py-4">
-                                <a href="{{ route('admin.conference.form', [$list['id']]) }}"
+                                <a href="{{ route('administrator.conference.form', [$list['id']]) }}"
                                    class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 block text-center dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"> {{__('content.conferences.edit')}}</a>
                             </td>
                             <td class="px-6 py-4">
-                                <form action="{{ route('admin.conference.delete') }}" method="post">
+                                <form action="{{ route('administrator.conference.delete') }}" method="post">
                                     @csrf
                                     <input type="hidden" name="id" value="{{$list['id']}}">
                                     <button type="submit"
