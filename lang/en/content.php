@@ -30,7 +30,10 @@ return [
         'back' => 'Go back',
         'not_found' => 'There are no registered.',
         'registered_users_title' => 'Registered people',
-        'register' => 'Register'
+        'register' => 'Register',
+        'registration_success'=> 'Successfully registered.',
+        'registration_fail'=> 'Registration failed.',
+        'already_registered'=> 'User is already registered.',
     ],
     'users' => [
         'client_title' => 'Client list'

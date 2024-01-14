@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Enums\UserRoles;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ConferenceFormRequest;
+use App\Http\Requests\RegisterRequest;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 
@@ -22,7 +23,7 @@ class RegisterController extends Controller
         return view("registration");
     }
 
-    public function create(ConferenceFormRequest $request)
+    public function create(RegisterRequest $request)
     {
         $response = $this->userService->create($request->first_name, $request->last_name, $request->email, $request->phone, $request->password);
         $jsonResponse = json_decode($response->content());

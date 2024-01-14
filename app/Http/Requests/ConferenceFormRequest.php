@@ -24,13 +24,13 @@ class ConferenceFormRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'first_name' => 'required|alpha|max:255',
+            'first_name' => 'required|string|max:255',
             'last_name' => 'required|alpha|max:255',
-            'email' => 'required|unique:users|email:rfc, dns',
-            'phone' => 'required|numeric',
-            'password' => 'required|min:8',
+            'email' => 'required|email|unique:users,email,' . auth()->id(),
+            'phone' => 'required|string',
         ];
     }
+
 
     protected function failedValidation(Validator $validator)
     {

@@ -28,7 +28,7 @@ class LoginController extends Controller
         $jsonResponse = json_decode($authenticated->content());
 
         if ($jsonResponse->success) {
-            return redirect()->to(auth()->user()->role->name);
+            return redirect()->route(auth()->user()->role->name);
         }
 
         return redirect()->back()->withInput()->with([

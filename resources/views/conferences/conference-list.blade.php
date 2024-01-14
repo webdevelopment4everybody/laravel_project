@@ -47,7 +47,8 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($conferences_list as $list)
+
+                @forelse($conferences_list as $list)
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             {{$list->name}}
@@ -86,7 +87,9 @@
                             </td>
                         @endif
                     </tr>
-                @endforeach
+                @empty
+                    No conferences.
+                @endforelse
                 </tbody>
             </table>
             @if(session()->has('success'))

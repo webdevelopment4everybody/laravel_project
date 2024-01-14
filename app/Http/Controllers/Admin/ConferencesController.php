@@ -24,6 +24,7 @@ class ConferencesController extends Controller
     public function conferences()
     {
         session()->put('role', 'admin');
+
         return view("conferences.conference-list", [
             'conferences_list' => $this->conferenceService->getAllConferences(),
         ]);

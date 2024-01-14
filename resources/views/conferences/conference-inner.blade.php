@@ -11,6 +11,7 @@
             <a class="right-0 absolute text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
                href="{{route('administrator.conferences')}}">{{__('content.conferences.back')}}</a>
         @endif
+        @if(!empty($conference))
         <h1 class="flex items-center text-5xl font-extrabold mt-[50px] mb-[50px] justify-center dark:text-[#2c384d]">
             {{$conference->name}}
         </h1>
@@ -28,17 +29,17 @@
             <div class="registered-users mt-[50px]">
                 <h2 class="text-2xl mb-[20px] font-bold dark:text-[#2c384d]">{{__('content.conferences.registered_users_title')}}
                     :</h2>
-                @if(isset($conference['registered_users']) )
                     <ul class="max-w-md space-y-1 text-black  list-disc list-inside dark:text-black">
-                        @foreach($conference['registered_users'] as $user)
-                            <li>{{$user['name']}} {{$user['lastname']}} {{$user['email']}} {{$user['phone_number']}}</li>
-                        @endforeach
+                        @forelse($conference->users as $user)
+
+                            <li>{{$user->name}} {{$user->lastname}} {{$user->email}} {{$user->phone}}</li>
+                        @empty
+                            <div class="registered-users mt-[50px]">
+                                <p>{{__('content.conferences.not_found')}}</p>
+                            </div>
+                        @endforelse
                     </ul>
-                @else
-                    <div class="registered-users mt-[50px]">
-                        <p>{{__('content.conferences.not_found')}}</p>
-                    </div>
-                @endif
             </div>
+        @endif
     @endif
 @endsection

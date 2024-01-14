@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class UserConference extends Model
 {
     use HasFactory;
+    protected $table = 'user_conferences';
 
     protected $fillable = [
         "user_id",

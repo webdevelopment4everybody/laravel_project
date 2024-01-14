@@ -21,9 +21,21 @@ class FormController extends Controller
 
     public function create(ConferenceFormRequest $request)
     {
-        return redirect()->back()->with([
-            'success' => $this->conferenceService->createConference($request->all())
+        $response = $this->conferenceService->createConference($request->all(), $request->id);
+        $jsonResponse = json_decode($response->content());
+
+        if ($jsonResponse->success) {
+            return redirect()->back()->with([
+                'message'=> $jsonResponse->message,
+                'status'=> 1
+            ]);
+        }
+
+        return redirect()->back()->withInput()->with([
+            'message'=> $jsonResponse->message,
+            'status'=> 0
         ]);
+
     }
 
     public function logout()
@@ -31,4 +43,5 @@ class FormController extends Controller
         auth()->logout();
         return redirect()->to('login');
     }
+
 }

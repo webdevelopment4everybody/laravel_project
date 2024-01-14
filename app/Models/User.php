@@ -50,13 +50,15 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function conferences(): HasMany
+    public function conferences(): BelongsToMany
     {
-        return $this->hasMany(Conference::class, "conference_id");
+        return $this->belongsToMany(Conference::class, 'user_conferences', 'user_id', 'conference_id');
     }
+
 
     public function role(): BelongsTo
     {
         return $this->belongsTo(UserRole::class, "user_role_id");
     }
+
 }
