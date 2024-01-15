@@ -7,7 +7,8 @@ return [
         'employee' => 'Employee',
         'homepage' => 'Homepage',
         'logout' => 'Logout',
-        'login'=> 'Login'
+        'login'=> 'Login',
+        'register'=>'Registration'
     ],
     'conferences' => [
         'title' => 'All conferences',

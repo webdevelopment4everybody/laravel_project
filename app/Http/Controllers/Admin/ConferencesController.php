@@ -33,19 +33,19 @@ class ConferencesController extends Controller
 
     public function delete(DeleteRequest $request)
     {
-        $response =$this->conferenceService->deleteConference($request->id);
+        $response = $this->conferenceService->deleteConference($request->id);
         $jsonResponse = json_decode($response->content());
 
         if ($jsonResponse->success) {
             return redirect()->back()->with([
-                'message'=> $jsonResponse->message,
-                'status'=> 1
+                'message' => $jsonResponse->message,
+                'status' => 1
             ]);
         }
 
         return redirect()->back()->withInput()->with([
-            'message'=> $jsonResponse->message,
-            'status'=> 0
+            'message' => $jsonResponse->message,
+            'status' => 0
         ]);
 
 
@@ -54,7 +54,7 @@ class ConferencesController extends Controller
     public function showForm(Request $request)
     {
         $data = [];
-        if($request->edit) {
+        if ($request->edit) {
             $data = $this->conferenceService->getConferenceById($request->edit);
         }
         return view("admin.conference-form", [
@@ -64,19 +64,38 @@ class ConferencesController extends Controller
 
     public function create(CreateConferenceRequest $request)
     {
+
         $response = $this->conferenceService->createConference($request->all());
         $jsonResponse = json_decode($response->content());
 
         if ($jsonResponse->success) {
             return redirect()->back()->with([
-                'message'=> $jsonResponse->message,
-                'status'=> 1
+                'message' => $jsonResponse->message,
+                'status' => 1
             ]);
         }
 
         return redirect()->back()->withInput()->with([
-            'message'=> $jsonResponse->message,
-            'status'=> 0
+            'message' => $jsonResponse->message,
+            'status' => 0
+        ]);
+    }
+
+    public function edit(CreateConferenceRequest $request)
+    {
+        $response = $this->conferenceService->updateConference($request->all(), $request->id);
+        $jsonResponse = json_decode($response->content());
+
+        if ($jsonResponse->success) {
+            return redirect()->route('administrator.conferences')->with([
+                'message' => $jsonResponse->message,
+                'status' => 1
+            ]);
+        }
+
+        return redirect()->back()->withInput()->with([
+            'message' => $jsonResponse->message,
+            'status' => 0
         ]);
     }
 }

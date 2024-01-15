@@ -6,7 +6,7 @@
         <h1 class="flex items-center text-5xl font-extrabold mt-[50px] mb-[50px] justify-center dark:text-[#2c384d]">
             {{ empty($data) ? __('content.admin.add_conference') : __('content.admin.edit_conference')}}
         </h1>
-        <form class="max-w-md mx-auto" method="post" action="{{route('administrator.conference.create')}}">
+        <form class="max-w-md mx-auto" method="post" action="{{route('administrator.conference.edit',$data->id ?? '')}}">
             @csrf
             <div class="grid md:grid-cols-2 md:gap-6">
                 <div class="relative z-0 w-full mb-5 group">
@@ -92,8 +92,8 @@
                     class="text-white bg-[#2c384d] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                 {{empty($data) ?  __('content.conferences.add') : __('content.conferences.update')}}</button>
         </form>
-        @if(session()->has('success'))
-            <p class="text-center mt-[50px]">{{session()->get('success')}}</p>
+        @if(session()->has('message'))
+            <p class="text-center mt-[50px]">{{session()->get('message')}}</p>
         @endif
     </div>
 @endsection

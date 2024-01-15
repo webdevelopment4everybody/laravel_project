@@ -52,6 +52,7 @@ Route::middleware(["admin_role"])->group(function () {
             Route::get('/', [ConferencesController::class, 'conferences'])->name('administrator.conferences');
             Route::delete('/delete', [ConferencesController::class, 'delete'])->name('administrator.conference.delete');
             Route::get('/form/{edit?}', [ConferencesController::class, 'showForm'])->name('administrator.conference.form');
+            Route::post('/create/{id}', [ConferencesController::class, 'edit'])->name('administrator.conference.edit');
             Route::post('/create/', [ConferencesController::class, 'create'])->name('administrator.conference.create');
         });
     });

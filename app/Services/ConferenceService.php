@@ -19,15 +19,16 @@ class ConferenceService
         return Conference::find($id);
     }
 
-    public function createConference(array $data, int $id): \Illuminate\Http\JsonResponse
+    public function createConference(array $data): \Illuminate\Http\JsonResponse
     {
         $success = false;
         $message = '';
-        $conferenceExist = UserConference::where('user_id', auth()->user()->id)->where('conference_id', $id)->exists();
-        if (!$conferenceExist) {
-            $conference = UserConference::create([
-                'user_id' => auth()->user()->id,
-                'conference_id' => $id
+            $conference = Conference::create([
+                'name' => $data['conference_name'],
+                'description' => $data['conference_description'],
+                'place' => $data['conference_place'],
+                'date' => Carbon::parse($data['conference_date'] . ' ' . $data['conference_time']),
+                'lectors' => $data['conference_lectors'],
             ]);
             if ($conference) {
                 $success = true;
@@ -35,10 +36,6 @@ class ConferenceService
             } else {
                 $message = __('content.conferences.registration_fail');
             }
-
-        } else {
-            $message = __('content.conferences.already_registered');
-        }
 
 
         return response()->json([
@@ -94,6 +91,35 @@ class ConferenceService
             'success' => $success,
             'message' => $message
         ]);
+    }
+
+    public function registerToConference(int $id): \Illuminate\Http\JsonResponse
+    {
+
+        $success = false;
+        $message = '';
+        if(!UserConference::where("user_id",auth()->user()->id)->where("conference_id",$id)->exists()) {
+            $conference = UserConference::create([
+                'user_id' => auth()->user()->id,
+                'conference_id' => $id,
+            ]);
+            if ($conference) {
+                $success = true;
+                $message = __('content.conferences.registration_success');
+            } else {
+                $message = __('content.conferences.registration_fail');
+            }
+
+        }else {
+            $message = __('content.conferences.already_registered');
+        }
+
+
+        return response()->json([
+            'success' => $success,
+            'message' => $message
+        ]);
+
     }
 
 }

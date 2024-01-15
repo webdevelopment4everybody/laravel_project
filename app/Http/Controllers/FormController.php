@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ConferenceFormRequest;
 use App\Services\ConferenceService;
+use App\Services\UserService;
 use Illuminate\Http\Request;
 
 class FormController extends Controller
@@ -21,7 +22,7 @@ class FormController extends Controller
 
     public function create(ConferenceFormRequest $request)
     {
-        $response = $this->conferenceService->createConference($request->all(), $request->id);
+        $response = $this->conferenceService->registerToConference($request->id);
         $jsonResponse = json_decode($response->content());
 
         if ($jsonResponse->success) {
